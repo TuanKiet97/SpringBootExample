@@ -1,12 +1,15 @@
 package com.example.componentscan;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Employee {
     private Long employeeId;
+    @Value("Thetiger97")
     private String firstName;
+    @Value("${java.home}")
     private String lastName;
     private Double salary;
 
