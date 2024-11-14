@@ -9,6 +9,7 @@ public class Employee {
     private Long employeeId;
     @Value("Thetiger97")
     private String firstName;
+
     @Value("${java.home}")
     private String lastName;
     private Double salary;
