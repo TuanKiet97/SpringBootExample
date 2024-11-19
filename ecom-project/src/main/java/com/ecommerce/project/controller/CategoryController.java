@@ -12,18 +12,19 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
 
-    @GetMapping("/api/public/categories")
+    @RequestMapping(value = "/public/categories", method = RequestMethod.GET)
     public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> categories = categoryService.getAllCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
-    @PostMapping("/api/public/categories")
+    @RequestMapping(value = "/public/categories", method = RequestMethod.POST)
     public ResponseEntity<String> createCategory(@RequestBody Category category) {
         categoryService.createCategory(category);
         return new ResponseEntity<>("Category added successfully", HttpStatus.OK);
