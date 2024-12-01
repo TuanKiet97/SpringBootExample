@@ -49,7 +49,7 @@ public class CategoryController {
                                                  @PathVariable Long categoryId){
         try{
             Category savedCategory = categoryService.updateCategory(category, categoryId);
-            return new ResponseEntity<>("Category with category id: " + categoryId, HttpStatus.OK);
+            return new ResponseEntity<>("Category updated with category id: " + categoryId, HttpStatus.OK);
         } catch (ResponseStatusException e){
             return new ResponseEntity<>(e.getReason(), e.getStatusCode());
         }
