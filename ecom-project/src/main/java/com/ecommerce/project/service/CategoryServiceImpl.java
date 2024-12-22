@@ -7,13 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
-    //private List<Category> categories = new ArrayList<>();
+public class CategoryServiceImpl implements CategoryService {
     private Long nextId = 1L;
 
     @Autowired
@@ -21,7 +18,11 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
+        if (categories.isEmpty()) {
+            throw new RuntimeException("No category created till now");
+        }
+        return categories;
     }
 
     @Override
